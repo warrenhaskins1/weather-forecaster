@@ -16,7 +16,40 @@
 
 //Get API key from OpenWeather/refer to  https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys) on how to use.
 
+
+//OW api key
 var apiKey = "faa5fe30b142609b2f606bb45d574316";
+
+//OW api url = https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+var url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityVal + "&appid=" + apiKey
+
+//Step 1. Get var for search field 
+var city = document.getElementById("#citySearch");
+
+//Step 2. Get the value from the search field to use in your url
+var cityVal = document.getElementById("#citySearch").value;
+
+//Step 3. Setup your fetch call. Reference mini project
+//We have our search form so write the function to handle events that occur with that search form.
+
+function citySearchHandler(event) {
+    event.preventDefault();
+
+    //We need our input value. We can set a message if theres no input value and assign our url to window.location
+    if (!cityVal) {
+        console.error("Please provide a city name!");
+        return;
+    }
+
+    location.assign(url);
+    console.log(url);
+}
+city.addEventListener("submit", citySearchHandler);
+
+
+
+
+
 
 
 
