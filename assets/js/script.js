@@ -16,28 +16,14 @@
 
 //Get API key from OpenWeather/refer to  https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys) on how to use.
 
-// API key name: wgh-weather-app:846ad021dd6cd6d13bdaab14c7c02811
-var apiKey ="846ad021dd6cd6d13bdaab14c7c02811" 
+var apiKey = "faa5fe30b142609b2f606bb45d574316";
 
-//Start by getting our search button/search-form and a function to call our submitEventHandler
-var searchFormEl = document.querySelector("#city-search-form");
 
-function handleSearchFormSubmit(event) {
-    event.preventDefault();
 
-    var searchInputVal = document.querySelector("#citySearch").value;
 
-    if (!searchInputVal) {
-        console.error("Please enter the name of the city you'd like the forecast for!");
-        return;
-    }
 
-    //to build our query string refer to the openweather docs for examples
-    var queryString = "./data/2.5/weather?q=" + searchInputVal + "&appid=" +apiKey;
 
-    location.assign(queryString);
-}
-searchFormEl.addEventListener("submit", handleSearchFormSubmit);
-
+//We will need one call for the current weather/one call for the future forecast/one call for the uv index based on lat/long.
+//Next we will call the api using the fetch function and see if we can return some data to the console
 
 
