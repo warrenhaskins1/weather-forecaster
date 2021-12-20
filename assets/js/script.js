@@ -20,31 +20,70 @@
 //OW api key
 var apiKey = "faa5fe30b142609b2f606bb45d574316";
 
-//OW api url = https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-var url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityVal + "&appid=" + apiKey
 
 //Step 1. Get var for search field 
 var city = document.getElementById("#citySearch");
-
+var currentWeather = document.getElementById("#currentWeather");
+var
 //Step 2. Get the value from the search field to use in your url
-var cityVal = document.getElementById("#citySearch").value;
+
 
 //Step 3. Setup your fetch call. Reference mini project
 //We have our search form so write the function to handle events that occur with that search form.
 
-function citySearchHandler(event) {
-    event.preventDefault();
+// function citySearchHandler(event) {
+//     event.preventDefault();
 
-    //We need our input value. We can set a message if theres no input value and assign our url to window.location
-    if (!cityVal) {
-        console.error("Please provide a city name!");
-        return;
-    }
+//     var cityVal = document.getElementById("#citySearch").value;
 
-    location.assign(url);
-    console.log(url);
-}
-city.addEventListener("submit", citySearchHandler);
+//     if (cityVal) {
+//         getWeather(cityVal);
+
+//         currentWeather.textContent = "";
+//         city.value = "";
+//     } else {
+//         alert("Please enter a city name.")
+//     }
+// };
+// city.addEventListener("submit", citySearchHandler);
+
+// var previousButton = function (event) {
+//     //This refers to our previous city weather searches. use data-attribute to access.
+//     var previous = event.target.getAttribute("data-value");
+//     //if theres no previous we wont attempt to fetch
+//     if (previous) {
+//         getPrevious(previous);
+
+//         currentWeather.textContent = "";
+//     }
+// };
+
+//Here is where we call our api fetch request getWeather
+
+ function getWeather(cityVal) {
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityVal + "&appid=" + apiKey;
+    fetch(url)
+    .then(function (response) {
+      if (response.ok) {
+        console.log(response);
+        response.json().then(function (data) {
+          console.log(data);
+          displayRepos(data, user);
+        });
+      } else {
+        alert('Error: ' + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      alert('Unable to connect to GitHub');
+    });
+};
+ 
+        
+
+getWeather();
+
+
 
 
 
