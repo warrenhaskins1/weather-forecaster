@@ -62,16 +62,25 @@ var getWeather = function (city) {
                     function displayForecast(data) {
                         currentUV.innerHTML = "UV Index: " + (data.current.uvi);
                         var forecast = data.daily;
-                        for (var i = 5; i < forecast.length; i=i+8) {
+
+                        for (var i = 4; i < forecast.length; i++) {
                             var dailyForecast = forecast[i];
 
                             var forecastEl = document.createElement("div");
                             forecastEl.classList = "card bg-dark text-light m-3";
                             console.log(dailyForecast);
+
+                            var forecastDate = document.createElement("h5")
+                            forecastDate.textContent = moment.unix(dailyForecast.dt).format("MMM D, YYYY");
+                            forecastDate.classList = "card-header text-center"
+                            forecastEl.appendChild(forecastDate);
+                            console.log(forecastDate);
+
+                            
                         }
                     }
                 });
-            //Remember to also include the cityID approach to the forecast
+            
             displayWeather(data, city);
             function displayWeather(data) {
                 //need to display name and date
@@ -85,8 +94,10 @@ var getWeather = function (city) {
                 currentHumidity.innerHTML = "Humidity: " + (data.main.humidity) + "%";
                 //var forecastContainerEl = document.querySelector("#forecast-container");
             }
-           
+
         });
+
+        
 
 
 
