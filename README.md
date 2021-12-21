@@ -1,5 +1,9 @@
 # weather-forecaster
+
 - Weather forecasting app to search conditions based on location. 
+
+- https://github.com/warrenhaskins1/weather-forecaster
+- https://warrenhaskins1.github.io/weather-forecaster/
 
 ## Description
 
