@@ -11,7 +11,7 @@
 The only required equipment neccessary to play are a web-browser and internet connection.
 
 
-![image](assets/images/screenshot.png)
+![image](assets/images/weatherScreenshot.png)
     
 ## Credits
 - https://stackoverflow.com/

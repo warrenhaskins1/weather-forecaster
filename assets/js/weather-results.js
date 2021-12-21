@@ -23,18 +23,16 @@ var formSubmitHandler = function (event) {
     if (cityname) {
         getWeather(cityname);
         // getForecast(cityname);
-
-        // repoContainerEl.textContent = '';
         cityInputEl.value = '';
     } else {
         alert('Please enter a City');
     }
-    saveCitySearch();
-    previousSearch(city);
+    // saveCitySearch();
+    // previousSearch(city);
 
-    var saveCitySearch = function () {
-        localStorage.setItems("cities", JSON.stringify(cities));
-    }
+    // var saveCitySearch = function () {
+    //     localStorage.setItems("cities", JSON.stringify(cities));
+    // }
 };
 
 // var url2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely,alerts&units=imperial&appid=" + apiKey;
@@ -75,12 +73,9 @@ var getWeather = function (city) {
                             forecastDate.classList = "card-header text-center"
                             forecastEl.appendChild(forecastDate);
                             console.log(forecastDate);
-
-                            
                         }
                     }
                 });
-            
             displayWeather(data, city);
             function displayWeather(data) {
                 //need to display name and date
@@ -96,15 +91,5 @@ var getWeather = function (city) {
             }
 
         });
-
-        
-
-
-
-
-
-
-
-
 }
 cityFormEl.addEventListener('submit', formSubmitHandler);
