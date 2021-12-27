@@ -73,7 +73,17 @@ var getWeather = function (city) {
             currentUV.innerHTML = "UV Index: " + data.current.uvi;
             var forecast = data.daily;
 
-            for (var i = 4; i < forecast.length; i++) {
+            if (data.current.uvi < 4) {
+                currentUV.setAttribute("class", "badge badge-success");
+            }
+            else if (data.currentUV < 8) {
+                currentUV.setAttribute("class", "badge badge-warning");
+            }
+            else {
+                currentUV.setAttribute("class", "badge badge-danger");
+            };
+
+            for (var i = 1; i < forecast.length-2; i++) {
               var dailyForecast = forecast[i];
 
               var forecastEl = document.createElement("div");
